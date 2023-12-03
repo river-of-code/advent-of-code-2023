@@ -1,3 +1,5 @@
+pub mod day_one;
+
 fn main() {
-    println!("Hello, world!");
+    day_one::solution_one::run();
 }
