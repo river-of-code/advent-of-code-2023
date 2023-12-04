@@ -5,12 +5,6 @@ struct Game {
   valid: bool
 }
 
-struct RGB {
-  r: u32,
-  g: u32,
-  b: u32
-}
-
 const MAXES: [(&str, u32); 3] = [
   ("red", 12),
   ("green", 13),
@@ -49,8 +43,10 @@ fn colors_valid(raw_round: &str) -> bool {
     let s: Vec<&str> = block.split(" ").collect();
     assert_eq!(s.len(), 2);
 
-    if s.get(0).unwrap().parse::<u32>().expect("this should have been a number") 
-        > *MAXES.into_iter().collect::<HashMap<&str, u32>>().get(s.get(1).unwrap()).unwrap() {
+    let count = s.get(0).unwrap().parse::<u32>().expect("this should have been a number");
+    let color = s.get(1).unwrap();
+    let color_max = *MAXES.into_iter().collect::<HashMap<&str, u32>>().get(color).unwrap();
+    if count > color_max {
       return false
     }
   }
