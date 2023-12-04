@@ -24,9 +24,11 @@ pub fn run() -> u32 {
 
     let to_add: String = vec![first_digit, last_digit].into_iter().collect();
 
-    println!("to_add: {}", to_add);
+    print!("adding: {}", to_add);
     
     sum += to_add.parse::<u32>().unwrap_or(0);
+
+    println!(", sum is now: {}", sum);
   }
 
   sum
